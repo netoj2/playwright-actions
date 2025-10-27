@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { Page, expect, test } from '@playwright/test';
 
 test('usuário obrigatório', async ({ page }) => {
   await login(page, '', 'senha123')
@@ -41,7 +41,7 @@ const login = async (page: Page, user: string, pass: string) => {
     const username = page.locator('[name=user]')
     const password = page.locator('[name=pass]')
 
-    user 
+    user
       ? await username.fill(user) : null
 
     pass
