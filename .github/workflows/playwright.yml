@@ -5,7 +5,7 @@ on: #Quando vai rodar?
     branches: [ main, master ] #Quando tiver um push na main ou na master
   pull_request:
     branches: [ main, master ] #Ou quando tiver um pull request na main ou na master
-  workflow_dispatch:          #Ou quando for clicado em um botão
+  workflow_dispatch:          #Ou quando for clicado em um botão 
 jobs: #Tarefas que devem ser executadas
   e2e-tests: #Nome da tarefa
     timeout-minutes: 60
