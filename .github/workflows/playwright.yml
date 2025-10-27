@@ -7,13 +7,16 @@ on: #Quando vai rodar?
     branches: [ main, master ] #Quando tiver um pull request na main ou na master
 
 jobs: #Tarefas que devem ser executadas
-  test:
+  e2e-tests: #Nome da tarefa
     timeout-minutes: 60
     runs-on: ubuntu-latest  #define quem que vai rodar os testes
 
     steps:
-      - uses: actions/checkout@v5.0.0
-      - uses: actions/setup-node@v5.0.0
+      - name: Get code #Pega o código do repositório
+        uses: actions/checkout@v5.0.0
+
+      - name: Install Node 18 #Instala o Node.js versão 18
+        uses: actions/setup-node@v5.0.0
         with:
           node-version: 18
 
@@ -23,12 +26,12 @@ jobs: #Tarefas que devem ser executadas
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
+      - name: Run E2E tests
         run: npx playwright test
 
-      - name: Upload Playwright report
-        if: always()
+      - name: Publish HTML Report #Publica o relatório HTML
         uses: actions/upload-artifact@v5.0.0
+        if: always()
         with:
           name: playwright-report
           path: playwright-report/
