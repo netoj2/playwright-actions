@@ -12,9 +12,8 @@ jobs: #Tarefas que devem ser executadas
     runs-on: ubuntu-latest  #define quem que vai rodar os testes
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5.0.0
+      - uses: actions/setup-node@v5.0.0
         with:
           node-version: 18
 
@@ -29,7 +28,7 @@ jobs: #Tarefas que devem ser executadas
 
       - name: Upload Playwright report
         if: always()
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v5.0.0
         with:
           name: playwright-report
           path: playwright-report/
